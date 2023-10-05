@@ -13,6 +13,8 @@ export const Routes = () => {
       path: "/auth",
       element: <Singup />,
     }
-  ]);
+  ], {
+    basename: '/todo-list-online'
+  });
   return <RouterProvider router={router} />;
 }
