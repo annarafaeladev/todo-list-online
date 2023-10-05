@@ -1,0 +1,159 @@
+.main_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #e0dede;
+  background-size: 400% 400%;
+}
+
+.log_board {
+  width: min(450px, 80vw);
+  height: 50vh;
+  box-sizing: border-box;
+  background: radial-gradient(
+    rgba(255, 255, 255, 0.436) 30%,
+    rgba(255, 255, 255, 0.432)
+  );
+  border-radius: 20px;
+  box-shadow: 2px 2px 10px rgba(98, 98, 98, 0.41), 1px 1px 1px #fff,
+    1px 1px 1px #555;
+  backdrop-filter: blur(5px);
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  overflow: hidden;
+  transition: transform 0.25s;
+  background-color: #fefefe;
+}
+.log_board h1 {
+  color: #4e4b4b;
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+.log_board h1 svg {
+  margin: 0 15px;
+}
+
+.input_field {
+  margin-top: 20px;
+  width: 350px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.input_field input {
+  font-size: 20px;
+  padding: 20px 10px;
+  height: 40px;
+  border: none;
+  border-bottom: solid 1px rgb(66, 66, 66);
+  background-color: transparent;
+  width: auto;
+  box-sizing: border-box;
+  transition: all 0.3s linear;
+  color: #545454;
+  font-weight: 400;
+  &:focus {
+    border-bottom: solid 1px rgb(111, 111, 111);
+    outline: 0;
+    box-shadow: 0 2px 6px -8px;
+    background-color: transparent;
+  }
+}
+
+.log_buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  width: auto;
+}
+
+.button_auth {
+  align-items: center;
+  appearance: none;
+  background-color: #3e9b1a;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+  width: 100%;
+}
+
+.button_auth:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #146a17 0 -3px 0 inset;
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.button_auth:active {
+  box-shadow: #57e03c 0 3px 7px inset;
+  transform: translateY(2px);
+  cursor: pointer;
+}
+.button_link {
+  align-items: center;
+  margin-top: 20px;
+  border: 0;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.button_link:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+
+.button_link:active {
+  transform: translateY(2px);
+  cursor: pointer;
+}
+
+.error-message {
+  color: rgb(225, 21, 21);
+}
