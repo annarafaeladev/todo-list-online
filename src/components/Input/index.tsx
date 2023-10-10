@@ -7,7 +7,7 @@ interface Props {
     placeholder?: string
     required?: boolean
 }
-export const Input = ({ labelTitle, htmlForInput, inputType, placeholder, required }: Props) => {
+export const Input = ({ labelTitle, htmlForInput, inputType, placeholder }: Props) => {
 
     return <React.Fragment>
         {labelTitle && <label htmlFor={htmlForInput} className="block mb-2 text-sm font-medium text-gray-900">{labelTitle}</label>}

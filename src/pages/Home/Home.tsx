@@ -18,7 +18,6 @@ Modal.setAppElement('#root');
 
 export const Home = () => {
   const navigate = useNavigate();
-  const [todo, setTodo] = useState("");
   const [user, setUser] = useState<User>();
   const [showModal, setShowModal] = useState<boolean>(false);
 
@@ -33,26 +32,11 @@ export const Home = () => {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.setItem("user", "{}");
-    navigate("/");
-
-  };
-
-  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodo(e.target.value);
-  };
-
   const handleTodo = () => {
-    console.log('Click')
+    console.log('Click', user)
 
   };
 
-
-  const todoListByCategory = () => {
-    return <div className="flex flex-col items-center justify-center text-gray-600">
-    </div>
-  }
 
   return (
 
@@ -64,9 +48,6 @@ export const Home = () => {
         <Button text="Categoria" type="button" bgColor='pink' />
         <FormModal setShowModal={(value) => setShowModal(value)} showModal={showModal} handleSave={() => handleTodo()} />
       </div>
-
-
-      {/* {todoListByCategory()} */}
 
     </div>
 
