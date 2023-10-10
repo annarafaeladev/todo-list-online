@@ -12,8 +12,8 @@ interface ResponseCustom {
 
 interface newTask {
     title: string;
-    description?: string;
-    categoryId?: number;
+    description?: string | null;
+    categoryId?: number | null;
 }
 
 interface updateTask {
@@ -49,7 +49,7 @@ const create = async (body: newTask): Promise<ResponseCustom> => {
 
         return {
             data: response?.data ?? {},
-            ok: response?.status === 200,
+            ok: response?.status === 201,
             message: response?.data?.message ?? response?.statusText ?? ''
         }
     } catch (error) {

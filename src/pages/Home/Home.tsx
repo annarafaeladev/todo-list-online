@@ -1,9 +1,22 @@
 import { useNavigate } from "react-router-dom";
-import Modal from 'react-modal';
 import { useEffect, useState } from "react";
 import { FormModal } from "../../components/FormModal";
 import { Navbar } from "../../components/Nav";
 import { Button } from "../../components/Button";
+import { List } from "../../components/List";
+import taskService from "../../service/taskService";
+
+interface Item {
+  id: number
+  title: string;
+  description?: string
+  severity: number;
+  done: boolean;
+}
+interface Tasks {
+  items: Array<Item>;
+}
+
 
 interface User {
   id: string;
@@ -14,12 +27,32 @@ interface User {
   token: string;
 }
 
-Modal.setAppElement('#root');
+interface newTask {
+  title: string;
+  description?: string | null;
+  categoryId?: number | null;
+}
+
+
 
 export const Home = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User>();
+  const [tasks, setTasks] = useState<Array<Tasks> | []>([]);
   const [showModal, setShowModal] = useState<boolean>(false);
+
+
+  useEffect(() => {
+    taskService.list().then((response) => {
+      if (response.ok) {
+        const items: Array<Tasks> = response.data;
+
+        if (items.length > 0) {
+          setTasks(items);
+        }
+      }
+    });
+  }, []);
 
 
   useEffect(() => {
@@ -32,8 +65,13 @@ export const Home = () => {
     }
   }, []);
 
-  const handleTodo = () => {
-    console.log('Click', user)
+  const handleTodo = async (task: newTask) => {
+    const result = await taskService.create(task)
+
+    if (result.ok) {
+      console.log('teste', result.data, user)
+      setTasks([...tasks, result.data])
+    }
 
   };
 
@@ -46,9 +84,9 @@ export const Home = () => {
       <div className="flex gap-4 p-6 justify-center text-lg font-serif">
         <Button text="Tarefa" type="button" handleClick={() => setShowModal(true)} />
         <Button text="Categoria" type="button" bgColor='pink' />
-        <FormModal setShowModal={(value) => setShowModal(value)} showModal={showModal} handleSave={() => handleTodo()} />
+        <FormModal setShowModal={(value) => setShowModal(value)} showModal={showModal} handleSave={handleTodo} />
       </div>
-
+      <List items={tasks} />
     </div>
 
   );

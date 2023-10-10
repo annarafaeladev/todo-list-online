@@ -1,18 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { FormGeneral } from "../FormGeneral";
 
+interface TaskSave {
+    title: string;
+    description?: string | null;
+    categoryId?: number | null
+}
 interface Props {
     showModal: boolean;
     setShowModal: (value: boolean) => void;
     modalTitle?: string;
-    handleSave: (e?: any) => any;
+    handleSave: (e: TaskSave) => void;
 }
 export function FormModal({ showModal, setShowModal, handleSave, modalTitle }: Props) {
+    const [title, setTitle] = useState<string>("");
+    const [description, setDescription] = useState<string | null>("");
 
-    const handleClick = (e: React.FormEvent<HTMLFormElement>): void => {
-        e.preventDefault();
+    const handleClick = (): void => {
+        const payload: TaskSave = {
+            title,
+            description,
+            categoryId: null
+        }
+
         setShowModal(false)
-        handleSave();
+        handleSave(payload);
 
     }
 
@@ -24,7 +36,13 @@ export function FormModal({ showModal, setShowModal, handleSave, modalTitle }: P
                     <section className="bg-white">
                         <div className="px-4 mx-auto max-w-screen-md">
                             <h2 className="mt-8  mb-8 text-4xl tracking-tight font-extrabold text-center text-gray-900">{modalTitle ?? ''}</h2>
-                            <FormGeneral handleClick={handleClick} setShowModal={setShowModal} />
+                            <FormGeneral
+                                handleClick={handleClick}
+                                setShowModal={setShowModal}
+                                setTitle={setTitle}
+                                setDescription={(value: string | null) => setDescription(value)}
+                                title={title} description={description}
+                            />
 
                         </div>
                     </section>
