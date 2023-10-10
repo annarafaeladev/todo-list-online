@@ -1,25 +1,11 @@
 import { AxiosResponse } from "axios";
-import { api } from "./api"
+import { api, upApi } from "./api"
 import { REQUEST_ERROR } from "../constants/erros";
+import { ILoginResponse, ISingupResponse } from "../interfaces/IUser";
 
 
-interface ResponseCustom {
-    ok: boolean;
-    data: any;
-    message: string
-}
 
-// Levantar a api
-const upApi = async () => {
-    try {
-        await api.get("/users/api")
-    } catch (error) {
-        console.error("Erro ao tentar despertar api ")
-    }
-};
-
-
-const signup = async (username: string, password: string, name: string): Promise<ResponseCustom> => {
+const signup = async (username: string, password: string, name: string): Promise<ISingupResponse> => {
     try {
         const response: AxiosResponse | void = await api.post("/users", {
             username,
@@ -43,13 +29,12 @@ const signup = async (username: string, password: string, name: string): Promise
     } catch (error) {
         return {
             ok: false,
-            data: {},
             message: REQUEST_ERROR,
         };
     }
 };
 
-const login = async (username: string, password: string): Promise<ResponseCustom> => {
+const login = async (username: string, password: string): Promise<ILoginResponse> => {
     try {
         const response: AxiosResponse | void = await api.post("/login", {
             username,
@@ -74,7 +59,6 @@ const login = async (username: string, password: string): Promise<ResponseCustom
     } catch (error) {
         return {
             ok: false,
-            data: {},
             message: REQUEST_ERROR
         }
     }
