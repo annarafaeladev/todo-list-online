@@ -9,8 +9,8 @@
 }
 
 .log_board {
-  width: min(450px, 80vw);
-  height: 50vh;
+  width: min(450px, 90vw);
+  height: auto;
   box-sizing: border-box;
   background: radial-gradient(
     rgba(255, 255, 255, 0.436) 30%,
@@ -24,13 +24,14 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  overflow: hidden;
+  overflow-x: scroll;
   transition: transform 0.25s;
   background-color: #fefefe;
+  padding: auto;
 }
 .log_board h1 {
   color: #4e4b4b;
-  font-size: 40px;
+  font-size: 1.8rem;
   margin-top: 30px;
 }
 
@@ -40,8 +41,8 @@
 
 .input_field {
   margin-top: 20px;
-  width: 350px;
-  height: 350px;
+  width: 88%;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;

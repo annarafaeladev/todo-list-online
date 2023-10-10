@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsPersonFillCheck } from "react-icons/bs";
 import service from "../../../service/userService";
 import "../Auth.css";
+import { ILoginResponse } from "../../../interfaces/IUser";
 
 export const Login = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,12 +29,14 @@ export const Login = () => {
       return;
     }
 
-    const result = await service.login(username, password);
+    const result: ILoginResponse = await service.login(username, password);
 
-    if (result.ok) {
+    if (result.ok && result.data?.token && result.data.user) {
       setUsername("");
       setPassword("");
       setErrorMessage("");
+      localStorage.setItem("user", JSON.stringify({ ...result?.data?.user, token: result.data.token }));
+      navigate("/home");
     }
 
   };
