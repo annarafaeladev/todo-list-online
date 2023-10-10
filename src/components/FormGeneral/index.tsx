@@ -3,14 +3,14 @@ import { Input } from "../Input";
 import { Button, ButtonLink } from "../Button";
 
 interface Props {
-    handleClick: () => any;
+    handleClick: (e: React.FormEvent<HTMLFormElement>) => void;
     setShowModal: (value: boolean) => void;
 }
 export const FormGeneral = ({ handleClick, setShowModal }: Props) => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        handleClick();
+        handleClick(e);
     }
 
     return <form onSubmit={handleSubmit} className="space-y-8">

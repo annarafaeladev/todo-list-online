@@ -1,5 +1,4 @@
 import axios from "axios";
-import { getUserToken } from "./utils";
 
 
 export const api = axios.create({

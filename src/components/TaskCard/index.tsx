@@ -1,5 +1,3 @@
-import React from "react";
-
 interface PropsCard {
     title: string;
     description?: string;

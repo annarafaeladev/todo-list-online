@@ -1,5 +1,3 @@
-import React from "react";
-
 interface Props {
     text: string;
     handleClick?: () => any;
@@ -13,7 +11,7 @@ interface PropsButtonLink {
     handleClick?: () => any;
 }
 
-export const Button = ({ text, handleClick, bgColor, icon, type }: Props) => {
+export const Button = ({ text, handleClick, type }: Props) => {
 
     return <button
         className={`bg-green-600 text-white active:bg-green-700 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150`}

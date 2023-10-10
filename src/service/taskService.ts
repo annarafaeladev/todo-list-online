@@ -176,5 +176,6 @@ const remove = async (id: number): Promise<ResponseCustom> => {
 export default {
     create,
     update,
-    // delete
+    remove,
+    list
 }

@@ -1,6 +1,4 @@
 import React from "react";
-import { FormLogin } from "../FormLogin";
-import { hasSubscribers } from "diagnostics_channel";
 import { FormGeneral } from "../FormGeneral";
 
 interface Props {
@@ -11,7 +9,7 @@ interface Props {
 }
 export function FormModal({ showModal, setShowModal, handleSave, modalTitle }: Props) {
 
-    const handleClick = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleClick = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         setShowModal(false)
         handleSave();
@@ -26,7 +24,7 @@ export function FormModal({ showModal, setShowModal, handleSave, modalTitle }: P
                     <section className="bg-white">
                         <div className="px-4 mx-auto max-w-screen-md">
                             <h2 className="mt-8  mb-8 text-4xl tracking-tight font-extrabold text-center text-gray-900">{modalTitle ?? ''}</h2>
-                            <FormGeneral handleClick={handleSave} setShowModal={setShowModal} />
+                            <FormGeneral handleClick={handleClick} setShowModal={setShowModal} />
 
                         </div>
                     </section>

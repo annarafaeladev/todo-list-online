@@ -1,13 +1,8 @@
-import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { BsPencilSquare, BsCheckLg, BsPersonCircle } from "react-icons/bs";
 import Modal from 'react-modal';
-import { BiLogOut } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import { FormModal } from "../../components/FormModal";
 import { Navbar } from "../../components/Nav";
-import BottomTab from "../../components/Tabs";
-import { TaskCard } from "../../components/TaskCard";
 import { Button } from "../../components/Button";
 
 interface User {
@@ -27,7 +22,6 @@ export const Home = () => {
   const [user, setUser] = useState<User>();
   const [showModal, setShowModal] = useState<boolean>(false);
 
-  // const handleModal = () => setOpen(!open);
 
   useEffect(() => {
     const storedData = localStorage.getItem("user");
