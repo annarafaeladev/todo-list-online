@@ -9,7 +9,7 @@ export const api = axios.create({
 // Levantar a api
 export const upApi = async () => {
     try {
-        await api.get("/users/api")
+        await api.get("/api/status")
     } catch (error) {
         console.error("Erro ao tentar despertar api ")
     }
